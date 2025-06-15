@@ -1,8 +1,8 @@
-import { Platform } from 'react-native';
+import messaging from '@react-native-firebase/messaging';
+import Constants from 'expo-constants';
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
-import Constants from 'expo-constants';
-import messaging from '@react-native-firebase/messaging';
+import { Platform } from 'react-native';
 
 // Configure how notifications appear when the app is in the foreground
 Notifications.setNotificationHandler({
@@ -133,23 +133,43 @@ export function initializeFirebaseMessaging() {
 
 // Send a test notification (for development purposes)
 export async function sendTestNotification(expoPushToken: string) {
-  const message = {
-    to: expoPushToken,
-    sound: 'default',
-    title: 'Test Notification',
-    body: 'This is a test notification from Firebase!',
-    data: { testData: 'Test value' },
-  };
+  try {
+    // Create a local notification for immediate testing
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: 'Test Notification',
+        body: 'This is a test notification!',
+        data: { testData: 'Test value' },
+      },
+      trigger: null, // Show immediately
+    });
 
-  await fetch('https://exp.host/--/api/v2/push/send', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Accept-encoding': 'gzip, deflate',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(message),
-  });
+    // Also try to send a push notification
+    const message = {
+      to: expoPushToken,
+      sound: 'default',
+      title: 'Test Push Notification',
+      body: 'This is a test push notification!',
+      data: { testData: 'Test value' },
+    };
+
+    const response = await fetch('https://exp.host/--/api/v2/push/send', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Accept-encoding': 'gzip, deflate',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(message),
+    });
+
+    const result = await response.json();
+    console.log('Push notification sent:', result);
+    return result;
+  } catch (error) {
+    console.error('Error sending test notification:', error);
+    throw error;
+  }
 }
 
 // Add notification listeners

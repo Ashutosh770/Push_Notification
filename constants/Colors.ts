@@ -3,24 +3,40 @@
  * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
  */
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+const primaryColor = '#007AFF';
+const secondaryColor = '#5856D6';
+const backgroundColor = '#FFFFFF';
+const textColor = '#000000';
+const borderColor = '#E5E5EA';
+const placeholderColor = '#8E8E93';
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    text: textColor,
+    background: backgroundColor,
+    tint: primaryColor,
+    icon: '#666666',
+    tabIconDefault: '#8E8E93',
+    tabIconSelected: primaryColor,
+    border: borderColor,
+    placeholder: placeholderColor,
+    error: '#FF3B30',
+    success: '#34C759',
+    warning: '#FF9500',
+    info: '#5856D6',
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
+    text: textColor,
+    background: backgroundColor,
+    tint: primaryColor,
+    icon: '#666666',
+    tabIconDefault: '#8E8E93',
+    tabIconSelected: primaryColor,
+    border: borderColor,
+    placeholder: placeholderColor,
+    error: '#FF3B30',
+    success: '#34C759',
+    warning: '#FF9500',
+    info: '#5856D6',
   },
 };
