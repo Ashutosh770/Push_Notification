@@ -3,6 +3,9 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
+import { useEffect } from 'react';
+
+import { initializeFirebase } from '@/services/firebase';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 
@@ -11,6 +14,15 @@ export default function RootLayout() {
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
+
+  // Initialize Firebase when the app starts
+  useEffect(() => {
+    try {
+      initializeFirebase();
+    } catch (error) {
+      console.error('Failed to initialize Firebase:', error);
+    }
+  }, []);
 
   if (!loaded) {
     // Async font loading only occurs in development.
