@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Push_Notification",
-    "slug": "Push_Notification",
+    "slug": "pushnotification",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -10,12 +10,15 @@
     "newArchEnabled": true,
     "extra": {
       "eas": {
-        "projectId": "your-expo-project-id"
+        "projectId": "7ba05442-2282-4e0a-9d15-415635a2fa8e"
       }
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.pushnotification.app"
+      "bundleIdentifier": "com.pushnotification.app",
+      "infoPlist": {
+        "UIBackgroundModes": ["remote-notification"]
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -24,7 +27,8 @@
       },
       "edgeToEdgeEnabled": true,
       "googleServicesFile": "./google-services.json",
-      "package": "com.pushnotification.app"
+      "package": "com.pushnotification.app",
+      "permissions": ["NOTIFICATIONS"]
     },
     "web": {
       "bundler": "metro",

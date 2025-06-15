@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Button, Platform, ScrollView } from 'react-native';
 import * as Notifications from 'expo-notifications';
+import React, { useEffect, useState } from 'react';
+import { Button, ScrollView, StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import {
-  requestNotificationPermission,
-  getExpoPushToken,
-  getFirebaseToken,
-  initializeFirebaseMessaging,
-  sendTestNotification,
-  addNotificationListeners
+    addNotificationListeners,
+    getExpoPushToken,
+    getFirebaseToken,
+    initializeFirebaseMessaging,
+    requestNotificationPermission,
+    sendTestNotification
 } from '@/services/NotificationService';
 
 export default function NotificationScreen() {
