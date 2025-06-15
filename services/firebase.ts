@@ -1,4 +1,3 @@
-import { Platform } from 'react-native';
 import firebase from '@react-native-firebase/app';
 import '@react-native-firebase/messaging';
 

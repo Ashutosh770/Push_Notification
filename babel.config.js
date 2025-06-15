@@ -7,6 +7,15 @@ module.exports = function(api) {
       'expo-router/babel',
       // Required for React Native Reanimated
       'react-native-reanimated/plugin',
+      [
+        'module-resolver',
+        {
+          root: ['./'],
+          alias: {
+            '@': './',
+          },
+        },
+      ],
     ],
   };
 };
